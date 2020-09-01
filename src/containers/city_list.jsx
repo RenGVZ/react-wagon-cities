@@ -2,19 +2,22 @@ import React, { Component } from 'react';
 // import { bindActionCreators } from 'redux';
 // import { connect } from 'react-redux';
 // import { setCity } from '../actions';
-import { City } from './city';
-
-// import { cities } from '../components/app';
+import City from '../containers/city';
 
 class CityList extends Component {
+  renderList() {
+    return this.props.cities.map((city) => {
+      return (
+        <City key={city.name} city={city} />
+      );
+    });
+  }
+
   render() {
-    const { cities } = this.props;
     return (
-      <div className="cities">
-        {cities.map((city) => (
-          <City city={city}/>
-        ))}
-      </div>
+      <ul className="cities">
+        {this.renderList()}
+      </ul>
     );
   }
 }

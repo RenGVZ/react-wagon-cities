@@ -10,7 +10,7 @@ const cities = [
 const App = () => {
   return (
     <div className="app">
-      <CityList cities={cities}/>
+      <CityList cities={cities} />
     </div>
   );
 };
