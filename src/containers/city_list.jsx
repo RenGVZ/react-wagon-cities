@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-// import { bindActionCreators } from 'redux';
-// import { connect } from 'react-redux';
-// import { setCity } from '../actions';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+
 import City from '../containers/city';
 
 class CityList extends Component {
@@ -15,11 +15,17 @@ class CityList extends Component {
 
   render() {
     return (
-      <ul className="cities">
+      <ul className="list-group cities">
         {this.renderList()}
       </ul>
     );
   }
 }
 
-export default CityList;
+function mapStateToProps(state) {
+  return {
+    cities: state.cities
+  };
+}
+
+export default connect(mapStateToProps)(CityList);
