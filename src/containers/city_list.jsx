@@ -1,13 +1,16 @@
 import React, { Component } from 'react';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+
 import City from './city';
 
 class CityList extends Component {
   renderCities() {
-    return this.props.cities.map(city => {
+    return this.props.cities.map((city) => {
       return (
-        <City city={city} key={city.name}/>
+        <City city={city} key={city.name} />
       );
-    })
+    });
   }
 
   render() {
@@ -19,4 +22,10 @@ class CityList extends Component {
   }
 }
 
-export default CityList;
+function mapStateToProps(state) {
+  return {
+    cities: state.cities
+  };
+}
+
+export default connect(mapStateToProps)(CityList);

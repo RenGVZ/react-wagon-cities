@@ -1,13 +1,21 @@
 import React from 'react';
-import ActiveCity from './active_city';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+
+import selectCity from '../actions/actions_index';
 
 const City = (props) => {
   return (
-    <li className="list-group-item">
+    <li 
+      className="list-group-item"
+      onClick={() => props.selectCity(props.city)}>
       <h1>{props.city.name}</h1>
-      <p>{props.city.address}</p>
     </li>
   );
 };
 
-export default City;
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({ selectCity }, dispatch);
+}
+
+export default connect(null, mapDispatchToProps)(City);
